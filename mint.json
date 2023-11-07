@@ -1,0 +1,73 @@
+{
+    "name": "Pinecone",
+    "logo": {
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
+    },
+    "favicon": "/favicon.png",
+    "colors": {
+      "primary": "#1C17FF",
+      "light": "#504CFF",
+      "dark": "#1C17FF"
+    },
+    "topbarCtaButton": {
+      "name": "Sign Up Free",
+      "url": "https://login.pinecone.io/login?state=hKFo2SB3LVgyTnA4c2Q3UHBLbXFpdzEzb0pIRE9NYWNWa1Y4OKFupWxvZ2luo3RpZNkgbVctNWYtUUhpV2JLeDVuMDZXWlk1ZTdlT0JBMGtiRGKjY2lk2SBUOEkyaEc2Q2FaazUwT05McWhmN3h6a1I0WmhMcVM0Qw&client=T8I2hG6CaZk50ONLqhf7xzkR4ZhLqS4C&protocol=oauth2&audience=https%3A%2F%2Fus-central1-production-console.cloudfunctions.net%2Fapi%2Fv1&scope=openid%20profile%20email%20read%3Acurrent_user&redirect_uri=https%3A%2F%2Fapp.pinecone.io&sessionType=signup&response_type=code&response_mode=query&nonce=QjNMMlhpblJucTN6cUJ3WG1ybXpoT354amItdFBsZzlfbjVIeHl0bC5ZVg%3D%3D&code_challenge=yd01B1uKSv6_t7TMJ2tAy6Qnc0tZ5Sz81BADBxfWyo8&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtcmVhY3QiLCJ2ZXJzaW9uIjoiMS41LjAifQ%3D%3D"
+    },
+    "topbarLinks": [
+      {
+        "name": "Log In",
+        "url": "https://login.pinecone.io/login?state=hKFo2SBLWGJFVm1QeE5hM05MZURTSU94MXV0VlFzZzNvVUxERaFupWxvZ2luo3RpZNkgMVdXUm5JWTJvcDNieU40akVub0FULXU5T25YTDY3M0ujY2lk2SBUOEkyaEc2Q2FaazUwT05McWhmN3h6a1I0WmhMcVM0Qw&client=T8I2hG6CaZk50ONLqhf7xzkR4ZhLqS4C&protocol=oauth2&audience=https%3A%2F%2Fus-central1-production-console.cloudfunctions.net%2Fapi%2Fv1&scope=openid%20profile%20email%20read%3Acurrent_user&redirect_uri=https%3A%2F%2Fapp.pinecone.io&sessionType=login&response_type=code&response_mode=query&nonce=NXQySDNwQnhHNy5iZzNZd2N4TTU4cHJsbEIzZEtZdE44OTNCRUhaR2dZUg%3D%3D&code_challenge=UNtXV8EvaX5aj4xVxMljDcoX_h4HNFJlDNy4YUIedZw&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtcmVhY3QiLCJ2ZXJzaW9uIjoiMS41LjAifQ%3D%3D"
+      }
+    ],
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "api-reference"
+        }
+    ],
+    "anchors": [
+      {
+        "name": "Contact",
+        "icon": "address-card",
+        "url": "https://www.pinecone.io/contact/"
+      },
+      {
+        "name": "System Status",
+        "icon": "signal-bars",
+        "url": "https://status.pinecone.io/"
+      },
+      {
+        "name": "Forum",
+        "icon": "message-code",
+        "url": "https://community.pinecone.io/"
+      }
+    ],
+    "navigation": [
+        {
+            "group": "Getting started",
+            "pages": [
+              "overview",
+              "quickstart",
+              "authentication",
+              "choosing-index-type-and-size"
+            ]
+          },
+          {
+            "group": "Vector Operations",
+            "pages": [
+              "api-reference/vector-operations/describeindexstats",
+              "api-reference/vector-operations/query",
+              "api-reference/vector-operations/delete",
+              "api-reference/vector-operations/fetch",
+              "api-reference/vector-operations/update",
+              "api-reference/vector-operations/upsert"
+            ]
+          }
+    ],
+    "footerSocials":
+      {
+          "twitter": "https://twitter.com/pinecone?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+          "linkedin": "https://www.linkedin.com/company/pinecone-io/"
+      }
+  }
