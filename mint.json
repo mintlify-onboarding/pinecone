@@ -54,14 +54,17 @@
             ]
           },
           {
-            "group": "Vector Operations",
+            "group": "Index Operations",
             "pages": [
-              "api-reference/vector-operations/describeindexstats",
-              "api-reference/vector-operations/query",
-              "api-reference/vector-operations/delete",
-              "api-reference/vector-operations/fetch",
-              "api-reference/vector-operations/update",
-              "api-reference/vector-operations/upsert"
+              "api-reference/index-operations/get-collections",
+              "api-reference/index-operations/post-collections",
+              "api-reference/index-operations/get-collections-1",
+              "api-reference/index-operations/delete-collections",
+              "api-reference/index-operations/get-databases",
+              "api-reference/index-operations/post-databases",
+              "api-reference/index-operations/get-databases-1",
+              "api-reference/index-operations/delete-databases",
+              "api-reference/index-operations/patch-databases"
             ]
           }
     ],
