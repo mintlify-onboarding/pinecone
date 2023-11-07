@@ -7,7 +7,7 @@ info:
     url: https://pinecone.io
     email: support@pinecone.io
 servers:
-  - url: '{index_name-project_id.svc.environment.pinecone.io}'
+  - url: 'https://index_name-project_id.svc.environment.pinecone.io'
     variables:
       index_name-project_id.svc.environment.pinecone.io:
         default: index_name-project_id.svc.environment.pinecone.io
