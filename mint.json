@@ -80,7 +80,8 @@
               "overview",
               "quickstart",
               "authentication",
-              "choosing-index-type-and-size"
+              "choosing-index-type-and-size",
+              "examples"
             ]
           },
           {
@@ -95,6 +96,20 @@
               "api-reference/index-operations/get-databases-1",
               "api-reference/index-operations/delete-databases",
               "api-reference/index-operations/patch-databases"
+            ]
+          },
+          {
+            "group": "Organizations",
+            "pages": [
+              "organizations/understanding-organizations",
+              {
+                "group": "Manage billing",
+                "pages": [
+                  "organizations/manage-billing/overview",
+                  "organizations/manage-billing/setting-up-billing-through-aws-marketplace",
+                  "organizations/manage-billing/setting-up-billing-through-azure-marketplace"
+                ]
+              }
             ]
           }
     ],
