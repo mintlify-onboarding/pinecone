@@ -1,0 +1,483 @@
+---
+title: Index
+---
+
+The `Index` class is used to perform data operations (upsert, query, etc)
+against Pinecone indexes. Typically it will be instantiated via a `Pinecone`
+client instance that has already built the required configuration from a
+combination of sources.
+
+```typescript
+import { Pinecone } from '@pinecone-database/pinecone';
+
+const pinecone = new Pinecone()
+const index = pinecone.index('index-name')
+```
+
+### Targeting an index, with user-defined Metadata types
+
+If you are storing metadata alongside your vector values inside your Pinecone records, you can pass a type parameter to `index()` in order to get proper TypeScript typechecking when upserting and querying data.
+
+```typescript
+const pinecone = new Pinecone();
+
+type MovieMetadata = {
+  title: string,
+  runtime: numbers,
+  genre: 'comedy' | 'horror' | 'drama' | 'action'
+}
+
+// Specify a custom metadata type while targeting the index
+const index = pinecone.index<MovieMetadata>('test-index');
+
+// Now you get type errors if upserting malformed metadata
+await index.upsert([{
+  id: '1234',
+  values: [
+    .... // embedding values
+  ],
+  metadata: {
+    genre: 'Gone with the Wind',
+    runtime: 238,
+    genre: 'drama',
+
+    // @ts-expect-error because category property not in MovieMetadata
+    category: 'classic'
+  }
+}])
+
+const results = await index.query({
+   vector: [
+    ... // query embedding
+   ],
+   filter: { genre: { '$eq': 'drama' }}
+})
+const movie = results.matches[0];
+
+if (movie.metadata) {
+  // Since we passed the MovieMetadata type parameter above,
+  // we can interact with metadata fields without having to
+  // do any typecasting.
+  const { title, runtime, genre } = movie.metadata;
+  console.log(`The best match in drama was ${title}`)
+}
+```
+
+## Type parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`RecordMetadata`](../modules.md#recordmetadata) = [`RecordMetadata`](../modules.md#recordmetadata) | The type of metadata associated with each record. |
+
+## Table of contents
+
+### Constructors
+
+- [constructor](Index.md#constructor)
+
+### Methods
+
+- [deleteAll](Index.md#deleteall)
+- [deleteMany](Index.md#deletemany)
+- [deleteOne](Index.md#deleteone)
+- [describeIndexStats](Index.md#describeindexstats)
+- [fetch](Index.md#fetch)
+- [namespace](Index.md#namespace)
+- [query](Index.md#query)
+- [update](Index.md#update)
+- [upsert](Index.md#upsert)
+
+## Constructors
+
+### constructor
+
+• **new Index**\<`T`\>(`indexName`, `config`, `namespace?`)
+
+Instantiation of Index is handled by [Pinecone](Pinecone.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`RecordMetadata`](../modules.md#recordmetadata) = [`RecordMetadata`](../modules.md#recordmetadata) |
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `indexName` | `string` | `undefined` | The name of the index that will receive operations from this [Index](Index.md) instance. |
+| `config` | [`PineconeConfiguration`](../modules.md#pineconeconfiguration) | `undefined` | The configuration from the Pinecone client. |
+| `namespace` | `string` | `''` | The namespace for the index. |
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+const index = pinecone.index('my-index');
+```
+
+#### Defined in
+
+[src/data/index.ts:259](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L259)
+
+## Methods
+
+### deleteAll
+
+▸ **deleteAll**(): `Promise`\<`void`\>
+
+Delete all records from the targeted namespace. To delete all records from across all namespaces,
+delete the index using [deleteIndex](Pinecone.md#deleteindex) and create a new one using [createIndex](Pinecone.md#createindex).
+
+#### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the delete is completed.
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+await pinecone.index('my-index').describeIndexStats();
+// {
+//  namespaces: {
+//    '': { recordCount: 10 },
+//   foo: { recordCount: 1 }
+//   },
+//   dimension: 8,
+//   indexFullness: 0,
+//   totalRecordCount: 11
+// }
+
+await pinecone.index('my-index').deleteAll();
+
+// Records in default namespace '' are now gone, but records in namespace 'foo' are not modified.
+await client.index('my-index').describeIndexStats();
+// {
+//  namespaces: {
+//   foo: { recordCount: 1 }
+//   },
+//   dimension: 8,
+//   indexFullness: 0,
+//   totalRecordCount: 1
+// }
+
+```
+
+#### Defined in
+
+[src/data/index.ts:162](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L162)
+
+___
+
+### deleteMany
+
+▸ **deleteMany**(`options`): `Promise`\<`void`\>
+
+Delete records from the index by either an array of ids, or a filter object.
+See [Filtering with metadata](https://docs.pinecone.io/docs/metadata-filtering#deleting-vectors-by-metadata-filter)
+for more on deleting records with filters.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options` | `any` | An array of record id values or a filter object. |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the delete is completed.
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+await pinecone.index('my-index').deleteMany(['record-1', 'record-2']);
+
+// or
+await pinecone.index('my-index').deleteMany({ genre: 'classical' });
+```
+
+**`Throws`**
+
+[PineconeArgumentError](Errors.PineconeArgumentError.md) when invalid arguments are passed.
+
+#### Defined in
+
+[src/data/index.ts:185](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L185)
+
+___
+
+### deleteOne
+
+▸ **deleteOne**(`id`): `Promise`\<`void`\>
+
+Delete a record from the index by id.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `id` | `any` | The id of the record to delete. |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the delete is completed.
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+await pinecone.index('my-index').deleteOne('record-1');
+```
+
+**`Throws`**
+
+[PineconeArgumentError](Errors.PineconeArgumentError.md) when invalid arguments are passed.
+
+#### Defined in
+
+[src/data/index.ts:203](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L203)
+
+___
+
+### describeIndexStats
+
+▸ **describeIndexStats**(): `Promise`\<[`IndexStatsDescription`](../modules.md#indexstatsdescription)\>
+
+Describes the index's statistics such as total number of records, records per namespace, and the index's dimension size.
+
+#### Returns
+
+`Promise`\<[`IndexStatsDescription`](../modules.md#indexstatsdescription)\>
+
+A promise that resolve with the [IndexStatsDescription](../modules.md#indexstatsdescription) value when the operation is completed.
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+await pinecone.index('my-index').describeIndexStats();
+
+// {
+//  namespaces: {
+//    '': { recordCount: 10 }
+//    foo: { recordCount: 2000 },
+//    bar: { recordCount: 2000 }
+//   },
+//   dimension: 1536,
+//   indexFullness: 0,
+//   totalRecordCount: 4010
+// }
+```
+
+#### Defined in
+
+[src/data/index.ts:230](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L230)
+
+___
+
+### fetch
+
+▸ **fetch**(`options`): `Promise`\<[`FetchResponse`](../modules.md#fetchresponse)\<`T`\>\>
+
+Fetch records from the index.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options` | [`FetchOptions`](../modules.md#fetchoptions) | The [FetchOptions](../modules.md#fetchoptions) for the operation. |
+
+#### Returns
+
+`Promise`\<[`FetchResponse`](../modules.md#fetchresponse)\<`T`\>\>
+
+A promise that resolves with the [FetchResponse](../modules.md#fetchresponse) when the fetch is completed.
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+await pinecone.index('my-index').fetch(['record-1', 'record-2']);
+```
+
+**`Throws`**
+
+[PineconeConnectionError](Errors.PineconeConnectionError.md) when invalid environment, project id, or index name is configured.
+
+**`Throws`**
+
+[PineconeArgumentError](Errors.PineconeArgumentError.md) when invalid arguments are passed.
+
+#### Defined in
+
+[src/data/index.ts:350](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L350)
+
+___
+
+### namespace
+
+▸ **namespace**(`namespace`): [`Index`](Index.md)\<`T`\>
+
+Returns an [Index](Index.md) targeting the specified namespace. By default, all operations take place inside the default namespace `''`.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `namespace` | `string` | The namespace to target within the index. All operations performed with the returned client instance will be scoped only to the targeted namespace. This `namespace()` method will inherit custom metadata types if you are chaining the call off an [Index](Index.md) client instance that is typed with a user-specified metadata type. See [index](Pinecone.md#index-1) for more info. |
+
+#### Returns
+
+[`Index`](Index.md)\<`T`\>
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+
+// Create an Index client instance scoped to operate on a
+// single namespace
+const ns = pinecone.index('my-index').namespace('my-namespace');
+
+// Now operations against this intance only affect records in
+// the targeted namespace
+ns.upsert([
+  // ... records to upsert in namespace 'my-namespace'
+])
+
+ns.query({
+  // ... query records in namespace 'my-namespace'
+})
+```
+
+#### Defined in
+
+[src/data/index.ts:309](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L309)
+
+___
+
+### query
+
+▸ **query**(`options`): `Promise`\<[`QueryResponse`](../modules.md#queryresponse)\<`T`\>\>
+
+Query records from the index. Query is used to find the `topK` records in the index whose vector values are most
+similar to the vector values of the query according to the distance metric you have configured for your index.
+See [Query data](https://docs.pinecone.io/docs/query-data) for more on querying.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options` | [`QueryOptions`](../modules.md#queryoptions) | The [QueryOptions](../modules.md#queryoptions) for the operation. |
+
+#### Returns
+
+`Promise`\<[`QueryResponse`](../modules.md#queryresponse)\<`T`\>\>
+
+A promise that resolves with the [QueryResponse](../modules.md#queryresponse) when the query is completed.
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+await pinecone.index('my-index').query({ topK: 3, id: 'record-1'});
+
+// or
+await pinecone.index('my-index').query({ topK: 3, vector: [0.176, 0.345, 0.263] });
+```
+
+**`Throws`**
+
+[PineconeConnectionError](Errors.PineconeConnectionError.md) when invalid environment, project id, or index name is configured.
+
+**`Throws`**
+
+[PineconeArgumentError](Errors.PineconeArgumentError.md) when invalid arguments are passed.
+
+#### Defined in
+
+[src/data/index.ts:373](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L373)
+
+___
+
+### update
+
+▸ **update**(`options`): `Promise`\<`void`\>
+
+Update a record in the index by id.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options` | [`UpdateOptions`](../modules.md#updateoptions)\<`T`\> | The [UpdateOptions](../modules.md#updateoptions) for the operation. |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the update is completed.
+
+**`Throws`**
+
+[PineconeConnectionError](Errors.PineconeConnectionError.md) when invalid environment, project id, or index name is configured.
+
+**`Throws`**
+
+[PineconeArgumentError](Errors.PineconeArgumentError.md) when invalid arguments are passed.
+
+#### Defined in
+
+[src/data/index.ts:385](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L385)
+
+___
+
+### upsert
+
+▸ **upsert**(`data`): `Promise`\<`void`\>
+
+Upsert records to the index.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | [`PineconeRecord`](../modules.md#pineconerecord)\<`T`\>[] | An array of [PineconeRecord](../modules.md#pineconerecord) objects to upsert. |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the upsert is completed.
+
+**`Example`**
+
+```js
+const pinecone = new Pinecone();
+await pinecone.index('my-index').upsert([{
+ id: 'record-1',
+ values: [0.176, 0.345, 0.263],
+},{
+ id: 'record-2',
+ values: [0.176, 0.345, 0.263],
+}])
+```
+
+**`Throws`**
+
+[PineconeConnectionError](Errors.PineconeConnectionError.md) when invalid environment, project id, or index name is configured.
+
+**`Throws`**
+
+[PineconeArgumentError](Errors.PineconeArgumentError.md) when invalid arguments are passed.
+
+#### Defined in
+
+[src/data/index.ts:333](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/index.ts#L333)

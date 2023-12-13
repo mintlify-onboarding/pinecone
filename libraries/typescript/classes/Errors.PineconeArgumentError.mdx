@@ -1,0 +1,187 @@
+---
+title: PineconeArgumentError
+---
+
+[Errors](../modules/Errors.md).PineconeArgumentError
+
+This error is thrown when arguments passed to a Pinecone
+client method fail a runtime validation.
+
+## Hierarchy
+
+- [`BasePineconeError`](Errors.BasePineconeError.md)
+
+  ↳ **`PineconeArgumentError`**
+
+## Table of contents
+
+### Constructors
+
+- [constructor](Errors.PineconeArgumentError.md#constructor)
+
+### Properties
+
+- [cause](Errors.PineconeArgumentError.md#cause)
+- [message](Errors.PineconeArgumentError.md#message)
+- [name](Errors.PineconeArgumentError.md#name)
+- [stack](Errors.PineconeArgumentError.md#stack)
+- [prepareStackTrace](Errors.PineconeArgumentError.md#preparestacktrace)
+- [stackTraceLimit](Errors.PineconeArgumentError.md#stacktracelimit)
+
+### Methods
+
+- [captureStackTrace](Errors.PineconeArgumentError.md#capturestacktrace)
+
+## Constructors
+
+### constructor
+
+• **new PineconeArgumentError**(`message`)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+
+#### Overrides
+
+[BasePineconeError](Errors.BasePineconeError.md).[constructor](Errors.BasePineconeError.md#constructor)
+
+#### Defined in
+
+[src/errors/validation.ts:8](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/validation.ts#L8)
+
+## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+The underlying error, if any.
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[cause](Errors.BasePineconeError.md#cause)
+
+#### Defined in
+
+[src/errors/base.ts:3](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/base.ts#L3)
+
+___
+
+### message
+
+• **message**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[message](Errors.BasePineconeError.md#message)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1054
+
+___
+
+### name
+
+• **name**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[name](Errors.BasePineconeError.md#name)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1053
+
+___
+
+### stack
+
+• `Optional` **stack**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stack](Errors.BasePineconeError.md#stack)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1055
+
+___
+
+### prepareStackTrace
+
+▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
+
+#### Type declaration
+
+▸ (`err`, `stackTraces`): `any`
+
+Optional override for formatting stack traces
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+**`See`**
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[prepareStackTrace](Errors.BasePineconeError.md#preparestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:11
+
+___
+
+### stackTraceLimit
+
+▪ `Static` **stackTraceLimit**: `number`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stackTraceLimit](Errors.BasePineconeError.md#stacktracelimit)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:13
+
+## Methods
+
+### captureStackTrace
+
+▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+
+Create .stack property on a target object
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt?` | `Function` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[captureStackTrace](Errors.BasePineconeError.md#capturestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:4

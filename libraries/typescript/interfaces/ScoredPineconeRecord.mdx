@@ -1,0 +1,109 @@
+---
+title: "ScoredPineconeRecord"
+---
+
+A [PineconeRecord](../modules.md#pineconerecord) with a similarity score.
+
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`RecordMetadata`](../modules.md#recordmetadata) = [`RecordMetadata`](../modules.md#recordmetadata) |
+
+## Hierarchy
+
+- [`PineconeRecord`](../modules.md#pineconerecord)\<`T`\>
+
+  ↳ **`ScoredPineconeRecord`**
+
+## Table of contents
+
+### Properties
+
+- [id](ScoredPineconeRecord.md#id)
+- [metadata](ScoredPineconeRecord.md#metadata)
+- [score](ScoredPineconeRecord.md#score)
+- [sparseValues](ScoredPineconeRecord.md#sparsevalues)
+- [values](ScoredPineconeRecord.md#values)
+
+## Properties
+
+### id
+
+• **id**: `string`
+
+The id of the record. This string can be any value and is
+useful when fetching or deleting by id.
+
+#### Inherited from
+
+PineconeRecord.id
+
+#### Defined in
+
+[src/data/types.ts:102](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L102)
+
+___
+
+### metadata
+
+• `Optional` **metadata**: `T`
+
+Any metadata associated with this record.
+
+#### Inherited from
+
+PineconeRecord.metadata
+
+#### Defined in
+
+[src/data/types.ts:118](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L118)
+
+___
+
+### score
+
+• `Optional` **score**: `number`
+
+The similarity score of the record. The interpretation of this score will be different
+depending on the distance metric configured on the index.
+
+For indexes using the `euclidean` distance metric, a lower similarity score is more
+similar, while for indexes using the `dotproduct` metric, higher scores are more similar.
+
+#### Defined in
+
+[src/data/query.ts:114](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/query.ts#L114)
+
+___
+
+### sparseValues
+
+• `Optional` **sparseValues**: [`RecordSparseValues`](../modules.md#recordsparsevalues)
+
+Records can optionally include sparse and dense values when an index
+is used for hybrid search. See [Sparse-dense vectors](https://docs.pinecone.io/docs/sparse-dense-vectors)
+
+#### Inherited from
+
+PineconeRecord.sparseValues
+
+#### Defined in
+
+[src/data/types.ts:113](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L113)
+
+___
+
+### values
+
+• **values**: [`RecordValues`](../modules.md#recordvalues)
+
+An array of numbers representing an embedding vector.
+
+#### Inherited from
+
+PineconeRecord.values
+
+#### Defined in
+
+[src/data/types.ts:107](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L107)

@@ -1,0 +1,804 @@
+---
+title: Overview
+---
+
+### Namespaces
+
+- [Errors](modules/Errors.md)
+
+### Classes
+
+- [Index](classes/Index.md)
+- [Pinecone](classes/Pinecone.md)
+
+### Interfaces
+
+- [IndexMeta](interfaces/IndexMeta.md)
+- [IndexMetaDatabase](interfaces/IndexMetaDatabase.md)
+- [IndexMetaStatus](interfaces/IndexMetaStatus.md)
+- [ScoredPineconeRecord](interfaces/ScoredPineconeRecord.md)
+
+### Type Aliases
+
+- [CollectionDescription](modules.md#collectiondescription)
+- [CollectionList](modules.md#collectionlist)
+- [CollectionName](modules.md#collectionname)
+- [ConfigureIndexOptions](modules.md#configureindexoptions)
+- [CreateCollectionOptions](modules.md#createcollectionoptions)
+- [CreateIndexOptions](modules.md#createindexoptions)
+- [DeleteCollectionOptions](modules.md#deletecollectionoptions)
+- [DeleteIndexOptions](modules.md#deleteindexoptions)
+- [DeleteManyByFilterOptions](modules.md#deletemanybyfilteroptions)
+- [DeleteManyByRecordIdOptions](modules.md#deletemanybyrecordidoptions)
+- [DeleteManyOptions](modules.md#deletemanyoptions)
+- [DeleteOneOptions](modules.md#deleteoneoptions)
+- [DescribeCollectionOptions](modules.md#describecollectionoptions)
+- [DescribeIndexOptions](modules.md#describeindexoptions)
+- [DescribeIndexStatsOptions](modules.md#describeindexstatsoptions)
+- [FetchAPI](modules.md#fetchapi)
+- [FetchOptions](modules.md#fetchoptions)
+- [FetchResponse](modules.md#fetchresponse)
+- [IndexDescription](modules.md#indexdescription)
+- [IndexList](modules.md#indexlist)
+- [IndexMetaStatusStateEnum](modules.md#indexmetastatusstateenum)
+- [IndexName](modules.md#indexname)
+- [IndexStatsDescription](modules.md#indexstatsdescription)
+- [IndexStatsNamespaceSummary](modules.md#indexstatsnamespacesummary)
+- [PartialCollectionDescription](modules.md#partialcollectiondescription)
+- [PartialIndexDescription](modules.md#partialindexdescription)
+- [PineconeConfiguration](modules.md#pineconeconfiguration)
+- [PineconeRecord](modules.md#pineconerecord)
+- [PodType](modules.md#podtype)
+- [QueryByRecordId](modules.md#querybyrecordid)
+- [QueryByVectorValues](modules.md#querybyvectorvalues)
+- [QueryOptions](modules.md#queryoptions)
+- [QueryResponse](modules.md#queryresponse)
+- [QueryShared](modules.md#queryshared)
+- [RecordId](modules.md#recordid)
+- [RecordMetadata](modules.md#recordmetadata)
+- [RecordMetadataValue](modules.md#recordmetadatavalue)
+- [RecordSparseValues](modules.md#recordsparsevalues)
+- [RecordValues](modules.md#recordvalues)
+- [UpdateOptions](modules.md#updateoptions)
+
+### Variables
+
+- [IndexMetaStatusStateEnum](modules.md#indexmetastatusstateenum-1)
+
+## Type Aliases
+
+### CollectionDescription
+
+Ƭ **CollectionDescription**: `Object`
+
+A description of a Pinecone collection
+
+**`See`**
+
+[Understanding collections](https://docs.pinecone.io/docs/collections#limitations)
+
+#### Type declaration
+
+| Name           | Type     | Description                                                                        |
+| :------------- | :------- | :--------------------------------------------------------------------------------- |
+| `dimension?`   | `number` | The dimension of records stored in the collection                                  |
+| `name?`        | `string` | The name of the collection                                                         |
+| `recordCount?` | `number` | The total number of records stored in the collection                               |
+| `size?`        | `number` | The amount of disk, in bytes, used to store the collection.                        |
+| `status?`      | `string` | A string indicating the status of a collection and whether it is ready to be used. |
+
+#### Defined in
+
+[src/control/describeCollection.ts:16](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/describeCollection.ts#L16)
+
+___
+
+### CollectionList
+
+Ƭ **CollectionList**: [`PartialCollectionDescription`](modules.md#partialcollectiondescription)[]
+
+A list of collections in your project
+
+**`See`**
+
+[Understanding collections](https://docs.pinecone.io/docs/collections#limitations)
+
+#### Defined in
+
+[src/control/listCollections.ts:18](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/listCollections.ts#L18)
+
+___
+
+### CollectionName
+
+Ƭ **CollectionName**: `string`
+
+Collection names are strings composed of:
+- alphanumeric characters
+- hyphens
+
+Collection names must be unique within a project and may not start or end with a hyphen.
+
+**`See`**
+
+[Understanding collections](https://docs.pinecone.io/docs/collections)
+
+#### Defined in
+
+[src/control/types.ts:52](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/types.ts#L52)
+
+___
+
+### ConfigureIndexOptions
+
+Ƭ **ConfigureIndexOptions**: `Object`
+
+**`See`**
+
+[Managing indexes](https://docs.pinecone.io/docs/manage-indexes)
+
+#### Type declaration
+
+| Name        | Type                            | Description                                                                                                                                                                                                                                                                                                                                                  |
+| :---------- | :------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `podType?`  | [`PodType`](modules.md#podtype) | The type of pod in the index. This string should combine a base pod type (`s1`, `p1`, or `p2`) with a size (`x1`, `x2`, `x4`, or `x8`) into a string such as `p1.x1` or `s1.x4`. The default pod type is `p1.x1`. For more information on these, see this guide on [pod types and sizes](https://docs.pinecone.io/docs/indexes#pods-pod-types-and-pod-sizes) |
+| `replicas?` | `number`                        | The number of replicas in the index. The default number of replicas is 1.                                                                                                                                                                                                                                                                                    |
+
+#### Defined in
+
+[src/control/configureIndex.ts:20](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/configureIndex.ts#L20)
+
+___
+
+### CreateCollectionOptions
+
+Ƭ **CreateCollectionOptions**: `Object`
+
+**`See`**
+
+[Understanding collections](https://docs.pinecone.io/docs/collections)
+
+#### Type declaration
+
+| Name     | Type                                          | Description                                                         |
+| :------- | :-------------------------------------------- | :------------------------------------------------------------------ |
+| `name`   | [`CollectionName`](modules.md#collectionname) | The name of the collection you would like to create.                |
+| `source` | [`IndexName`](modules.md#indexname)           | The name of the index you would like to create the collection from. |
+
+#### Defined in
+
+[src/control/createCollection.ts:18](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/createCollection.ts#L18)
+
+___
+
+### CreateIndexOptions
+
+Ƭ **CreateIndexOptions**: `Object`
+
+**`See`**
+
+[Understanding indexes](https://docs.pinecone.io/docs/indexes)
+
+#### Type declaration
+
+| Name                     | Type                                                            | Description                                                                                                                                                                                                                                                                                                                                                                                 |
+| :----------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dimension`              | `number`                                                        | The dimension of the index. Must be a positive integer. The dimension of your index should match the output dimension of your embedding model. For example, if you are using a model that outputs 128-dimensional vectors, you should set the dimension to 128.                                                                                                                             |
+| `metadataConfig?`        | \{ `indexed`: `string`[]  }                                     | Configuration for the behavior of Pinecone's internal metadata index. By default, all metadata is indexed; when a `metadataConfig` object is present, only metadata fields specified are indexed.                                                                                                                                                                                           |
+| `metadataConfig.indexed` | `string`[]                                                      | Specify an array of metadata fields you would like indexed. **`See`** [Filtering with metadata](https://docs.pinecone.io/docs/metadata-filtering)                                                                                                                                                                                                                                           |
+| `metric?`                | ``"cosine"`` \| ``"dotproduct"`` \| ``"euclidean"`` \| `string` | The metric specifies how similarity is calculated in the index when querying. The default metric is `'cosine'`. Supported metrics include `'cosine'`, `'dotproduct'`, and `'euclidean'`. To learn more about these options, see [Distance metrics](https://docs.pinecone.io/docs/indexes#distance-metrics) **`Default Value`** `"cosine"`                                                   |
+| `name`                   | [`IndexName`](modules.md#indexname)                             | The name of the index. Must be unique within the project and contain alphanumeric and hyphen characters. The name must start and end with alphanumeric characters.                                                                                                                                                                                                                          |
+| `podType?`               | [`PodType`](modules.md#podtype)                                 | The type of pod in the index. This string should combine a base pod type (`s1`, `p1`, or `p2`) with a size (`x1`, `x2`, `x4`, or `x8`) into a string such as `p1.x1` or `s1.x4`. The default pod type is `p1.x1`. For more information on these, see this guide on [pod types and sizes](https://docs.pinecone.io/docs/indexes#pods-pod-types-and-pod-sizes). **`Default Value`** `"p1.x1"` |
+| `pods?`                  | `number`                                                        | The number of pods in the index. The default number of pods is 1.                                                                                                                                                                                                                                                                                                                           |
+| `replicas?`              | `number`                                                        | The number of replicas in the index. The default number of replicas is 1.                                                                                                                                                                                                                                                                                                                   |
+| `sourceCollection?`      | `string`                                                        | If creating an index from a collection, you can specify the name of the collection here.                                                                                                                                                                                                                                                                                                    |
+| `suppressConflicts?`     | `boolean`                                                       | This option tells the client not to throw if you attempt to create an index that already exists.                                                                                                                                                                                                                                                                                            |
+| `waitUntilReady?`        | `boolean`                                                       | This option tells the client not to resolve the returned promise until the index is ready to receive data.                                                                                                                                                                                                                                                                                  |
+
+#### Defined in
+
+[src/control/createIndex.ts:21](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/createIndex.ts#L21)
+
+___
+
+### DeleteCollectionOptions
+
+Ƭ **DeleteCollectionOptions**: [`CollectionName`](modules.md#collectionname)
+
+The name of collection to delete.
+
+#### Defined in
+
+[src/control/deleteCollection.ts:9](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/deleteCollection.ts#L9)
+
+___
+
+### DeleteIndexOptions
+
+Ƭ **DeleteIndexOptions**: [`IndexName`](modules.md#indexname)
+
+The name of index to delete
+
+#### Defined in
+
+[src/control/deleteIndex.ts:6](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/deleteIndex.ts#L6)
+
+___
+
+### DeleteManyByFilterOptions
+
+Ƭ **DeleteManyByFilterOptions**: `object`
+
+**`See`**
+
+[Deleting vectors by metadata filter](https://docs.pinecone.io/docs/metadata-filtering#deleting-vectors-by-metadata-filter)
+
+#### Defined in
+
+[src/data/deleteMany.ts:28](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/deleteMany.ts#L28)
+
+___
+
+### DeleteManyByRecordIdOptions
+
+Ƭ **DeleteManyByRecordIdOptions**: [`RecordId`](modules.md#recordid)[]
+
+A list of record ids to delete from the index.
+
+#### Defined in
+
+[src/data/deleteMany.ts:23](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/deleteMany.ts#L23)
+
+___
+
+### DeleteManyOptions
+
+Ƭ **DeleteManyOptions**: [`DeleteManyByRecordIdOptions`](modules.md#deletemanybyrecordidoptions) \| [`DeleteManyByFilterOptions`](modules.md#deletemanybyfilteroptions)
+
+Options that may be passed to [deleteMany](classes/Index.md#deletemany)
+
+#### Defined in
+
+[src/data/deleteMany.ts:33](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/deleteMany.ts#L33)
+
+___
+
+### DeleteOneOptions
+
+Ƭ **DeleteOneOptions**: [`RecordId`](modules.md#recordid)
+
+The id of the record to delete from the index.
+
+**`See`**
+
+[deleteOne](classes/Index.md#deleteone)
+
+#### Defined in
+
+[src/data/deleteOne.ts:11](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/deleteOne.ts#L11)
+
+___
+
+### DescribeCollectionOptions
+
+Ƭ **DescribeCollectionOptions**: [`CollectionName`](modules.md#collectionname)
+
+The name of the collection to describe.
+
+#### Defined in
+
+[src/control/describeCollection.ts:9](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/describeCollection.ts#L9)
+
+___
+
+### DescribeIndexOptions
+
+Ƭ **DescribeIndexOptions**: [`IndexName`](modules.md#indexname)
+
+The name of the index to describe
+
+#### Defined in
+
+[src/control/describeIndex.ts:8](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/describeIndex.ts#L8)
+
+___
+
+### DescribeIndexStatsOptions
+
+Ƭ **DescribeIndexStatsOptions**: `Object`
+
+Optionally specify a filter expression to limit results from
+[describeIndexStats](classes/Index.md#describeindexstats).
+
+#### Type declaration
+
+| Name     | Type     | Description                                                                      |
+| :------- | :------- | :------------------------------------------------------------------------------- |
+| `filter` | `object` | **`See`** [Metadata filtering](https://docs.pinecone.io/docs/metadata-filtering) |
+
+#### Defined in
+
+[src/data/describeIndexStats.ts:55](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/describeIndexStats.ts#L55)
+
+___
+
+### FetchAPI
+
+Ƭ **FetchAPI**: `WindowOrWorkerGlobalScope`[``"fetch"``]
+
+#### Defined in
+
+[src/pinecone-generated-ts-fetch/runtime.ts:288](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/pinecone-generated-ts-fetch/runtime.ts#L288)
+
+___
+
+### FetchOptions
+
+Ƭ **FetchOptions**: [`RecordId`](modules.md#recordid)[]
+
+The list of record ids you would like to fetch using [fetch](classes/Index.md#fetch)
+
+#### Defined in
+
+[src/data/fetch.ts:10](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/fetch.ts#L10)
+
+___
+
+### FetchResponse
+
+Ƭ **FetchResponse**\<`T`\>: `Object`
+
+The response from [fetch](classes/Index.md#fetch)
+
+#### Type parameters
+
+| Name | Type                                                                                                  | Description                                                                      |
+| :--- | :---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------- |
+| `T`  | extends [`RecordMetadata`](modules.md#recordmetadata) = [`RecordMetadata`](modules.md#recordmetadata) | The metadata shape for each record: [RecordMetadata](modules.md#recordmetadata). |
+
+#### Type declaration
+
+| Name        | Type                                                                         | Description                                   |
+| :---------- | :--------------------------------------------------------------------------- | :-------------------------------------------- |
+| `namespace` | `string`                                                                     | The namespace where records were fetched.     |
+| `records`   | \{ `[key: string]`: [`PineconeRecord`](modules.md#pineconerecord)\<`T`\>;  } | A map of fetched records, keyed by record id. |
+
+#### Defined in
+
+[src/data/fetch.ts:16](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/fetch.ts#L16)
+
+___
+
+### IndexDescription
+
+Ƭ **IndexDescription**: [`IndexMeta`](interfaces/IndexMeta.md)
+
+The description of your index returned from [describeIndex](classes/Pinecone.md#describeindex)
+
+#### Defined in
+
+[src/control/describeIndex.ts:10](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/describeIndex.ts#L10)
+
+___
+
+### IndexList
+
+Ƭ **IndexList**: [`PartialIndexDescription`](modules.md#partialindexdescription)[]
+
+The list of indexes in your project
+
+#### Defined in
+
+[src/control/listIndexes.ts:15](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/listIndexes.ts#L15)
+
+___
+
+### IndexMetaStatusStateEnum
+
+Ƭ **IndexMetaStatusStateEnum**: typeof [`IndexMetaStatusStateEnum`](modules.md#indexmetastatusstateenum-1)[keyof typeof [`IndexMetaStatusStateEnum`](modules.md#indexmetastatusstateenum-1)]
+
+#### Defined in
+
+[src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts:52](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts#L52)
+
+[src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts:62](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts#L62)
+
+___
+
+### IndexName
+
+Ƭ **IndexName**: `string`
+
+Index names are strings composed of:
+- alphanumeric characters
+- hyphens
+
+Index names must be unique within a project and may not start or end with a hyphen.
+
+**`See`**
+
+[Understanding indexes](https://docs.pinecone.io/docs/indexes)
+
+#### Defined in
+
+[src/control/types.ts:22](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/types.ts#L22)
+
+___
+
+### IndexStatsDescription
+
+Ƭ **IndexStatsDescription**: `Object`
+
+An index description returned from [describeIndexStats](classes/Index.md#describeindexstats)
+
+#### Type declaration
+
+| Name                | Type                                                                                          | Description                                                                                                                                                                                                                                             |
+| :------------------ | :-------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dimension?`        | `number`                                                                                      | The dimension of the index.                                                                                                                                                                                                                             |
+| `indexFullness?`    | `number`                                                                                      | A number indicating the percentage of available storage consumed by your index. **`See`** - [Manage indexes](https://docs.pinecone.io/docs/manage-indexes) - [Choosing index type and size](https://docs.pinecone.io/docs/choosing-index-type-and-size) |
+| `namespaces?`       | \{ `[key: string]`: [`IndexStatsNamespaceSummary`](modules.md#indexstatsnamespacesummary);  } | A map whose keys are the names of namespaces and whose values are a namespace summary including the total record count in that namespace. **`See`** [Using namespaces](https://docs.pinecone.io/docs/namespaces)                                        |
+| `totalRecordCount?` | `number`                                                                                      | The total number of records that have been upserted to your index.                                                                                                                                                                                      |
+
+#### Defined in
+
+[src/data/describeIndexStats.ts:16](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/describeIndexStats.ts#L16)
+
+___
+
+### IndexStatsNamespaceSummary
+
+Ƭ **IndexStatsNamespaceSummary**: `Object`
+
+A count of the number of records found inside a namespace
+
+#### Type declaration
+
+| Name          | Type     | Description                             |
+| :------------ | :------- | :-------------------------------------- |
+| `recordCount` | `number` | The number of records in the namespace. |
+
+#### Defined in
+
+[src/data/describeIndexStats.ts:8](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/describeIndexStats.ts#L8)
+
+___
+
+### PartialCollectionDescription
+
+Ƭ **PartialCollectionDescription**: `Object`
+
+A partial description of a collection in your project.
+
+To see full information about the collection, see [describeCollection](classes/Pinecone.md#describecollection)
+
+#### Type declaration
+
+| Name   | Type     | Description                |
+| :----- | :------- | :------------------------- |
+| `name` | `string` | The name of the collection |
+
+#### Defined in
+
+[src/control/listCollections.ts:8](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/listCollections.ts#L8)
+
+___
+
+### PartialIndexDescription
+
+Ƭ **PartialIndexDescription**: `Object`
+
+A partial description of indexes in your project.
+
+For full information about each index, see
+[describeIndex](classes/Pinecone.md#describeindex)
+
+#### Type declaration
+
+| Name   | Type     | Description           |
+| :----- | :------- | :-------------------- |
+| `name` | `string` | The name of the index |
+
+#### Defined in
+
+[src/control/listIndexes.ts:9](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/listIndexes.ts#L9)
+
+___
+
+### PineconeConfiguration
+
+Ƭ **PineconeConfiguration**: `Object`
+
+**`See`**
+
+[Understanding projects](https://docs.pinecone.io/docs/projects)
+
+#### Type declaration
+
+| Name          | Type                              | Description                                                                                                                                                                                                                                               |
+| :------------ | :-------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `apiKey`      | `string`                          | The API key for your Pinecone project. You can find this in the [Pinecone console](https://app.pinecone.io).                                                                                                                                              |
+| `environment` | `string`                          | The environment for your Pinecone project. You can find this in the [Pinecone console](https://app.pinecone.io).                                                                                                                                          |
+| `fetchApi?`   | [`FetchAPI`](modules.md#fetchapi) | Optional configuration field for specifying the fetch implementation. If not specified, the client will look for fetch in the global scope and if none is found it will fall back to a [cross-fetch](https://www.npmjs.com/package/cross-fetch) polyfill. |
+| `projectId?`  | `string`                          | The project ID for your Pinecone project. This optional field can be passed, but if it is not then it will be automatically fetched when needed.                                                                                                          |
+
+#### Defined in
+
+[src/data/types.ts:23](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L23)
+
+___
+
+### PineconeRecord
+
+Ƭ **PineconeRecord**\<`T`\>: `Object`
+
+**`See`**
+
+[Pinecone records](https://docs.pinecone.io/docs/overview#pinecone-indexes-store-records-with-vector-data)
+
+#### Type parameters
+
+| Name | Type                                                                                                  |
+| :--- | :---------------------------------------------------------------------------------------------------- |
+| `T`  | extends [`RecordMetadata`](modules.md#recordmetadata) = [`RecordMetadata`](modules.md#recordmetadata) |
+
+#### Type declaration
+
+| Name            | Type                                                  | Description                                                                                                                                                                    |
+| :-------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`            | [`RecordId`](modules.md#recordid)                     | The id of the record. This string can be any value and is useful when fetching or deleting by id.                                                                              |
+| `metadata?`     | `T`                                                   | Any metadata associated with this record.                                                                                                                                      |
+| `sparseValues?` | [`RecordSparseValues`](modules.md#recordsparsevalues) | Records can optionally include sparse and dense values when an index is used for hybrid search. See [Sparse-dense vectors](https://docs.pinecone.io/docs/sparse-dense-vectors) |
+| `values`        | [`RecordValues`](modules.md#recordvalues)             | An array of numbers representing an embedding vector.                                                                                                                          |
+
+#### Defined in
+
+[src/data/types.ts:97](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L97)
+
+___
+
+### PodType
+
+Ƭ **PodType**: ``"s1.x1"`` \| ``"s1.x2"`` \| ``"s1.x4"`` \| ``"s1.x8"`` \| ``"p1.x1"`` \| ``"p1.x2"`` \| ``"p1.x4"`` \| ``"p1.x8"`` \| ``"p2.x1"`` \| ``"p2.x2"`` \| ``"p2.x4"`` \| ``"p2.x8"`` \| `string`
+
+**`See`**
+
+[Understanding indexes](https://docs.pinecone.io/docs/indexes)
+
+#### Defined in
+
+[src/control/types.ts:57](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/control/types.ts#L57)
+
+___
+
+### QueryByRecordId
+
+Ƭ **QueryByRecordId**: [`QueryShared`](modules.md#queryshared) & \{ `id`: `string`  }
+
+Include an `id` in your query configuration along with properties defined in
+[QueryShared](modules.md#queryshared) if you want to use vector values from a record in the
+index as your query.
+
+**`See`**
+
+[Querying data](https://docs.pinecone.io/docs/query-data)
+
+#### Defined in
+
+[src/data/query.ts:77](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/query.ts#L77)
+
+___
+
+### QueryByVectorValues
+
+Ƭ **QueryByVectorValues**: [`QueryShared`](modules.md#queryshared) & \{ `vector`: [`RecordValues`](modules.md#recordvalues)  }
+
+Include vector values in your query configuration along with properties defined
+in [QueryShared](modules.md#queryshared).
+
+**`See`**
+
+[Querying data](https://docs.pinecone.io/docs/query-data)
+
+#### Defined in
+
+[src/data/query.ts:91](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/query.ts#L91)
+
+___
+
+### QueryOptions
+
+Ƭ **QueryOptions**: [`QueryByRecordId`](modules.md#querybyrecordid) \| [`QueryByVectorValues`](modules.md#querybyvectorvalues)
+
+The options that may be passed to [query](classes/Index.md#query)
+
+#### Defined in
+
+[src/data/query.ts:100](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/query.ts#L100)
+
+___
+
+### QueryResponse
+
+Ƭ **QueryResponse**\<`T`\>: `Object`
+
+Response from [query](classes/Index.md#query)
+
+**`See`**
+
+[Query data](https://docs.pinecone.io/docs/query-data)
+
+#### Type parameters
+
+| Name | Type                                                                                                  |
+| :--- | :---------------------------------------------------------------------------------------------------- |
+| `T`  | extends [`RecordMetadata`](modules.md#recordmetadata) = [`RecordMetadata`](modules.md#recordmetadata) |
+
+#### Type declaration
+
+| Name        | Type                                                                  | Description                                 |
+| :---------- | :-------------------------------------------------------------------- | :------------------------------------------ |
+| `matches`   | [`ScoredPineconeRecord`](interfaces/ScoredPineconeRecord.md)\<`T`\>[] | The query results sorted by similarity      |
+| `namespace` | `string`                                                              | The namespace where the query was executed. |
+
+#### Defined in
+
+[src/data/query.ts:122](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/query.ts#L122)
+
+___
+
+### QueryShared
+
+Ƭ **QueryShared**: `Object`
+
+**`See`**
+
+[Query data](https://docs.pinecone.io/docs/query-data)
+
+#### Type declaration
+
+| Name               | Type      | Description                                                                                                                                                                   |
+| :----------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `filter?`          | `object`  | This parameter allows you to modify your query with a metadata filter. **`See`** [Metadata filtering](https://docs.pinecone.io/docs/metadata-filtering)                       |
+| `includeMetadata?` | `boolean` | This boolean value specifies whether metadata values are returned with query results. By default, metadata values are not returned to reduce the size of the request payload. |
+| `includeValues?`   | `boolean` | This boolean value specifies whether embedding values are returned with query results. By default, values are not returned to reduce the size of the request payload.         |
+| `topK`             | `number`  | The number of query results you would like returned.                                                                                                                          |
+
+#### Defined in
+
+[src/data/query.ts:44](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/query.ts#L44)
+
+___
+
+### RecordId
+
+Ƭ **RecordId**: `string`
+
+The id of the record
+
+#### Defined in
+
+[src/data/types.ts:63](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L63)
+
+___
+
+### RecordMetadata
+
+Ƭ **RecordMetadata**: `Record`\<`string`, [`RecordMetadataValue`](modules.md#recordmetadatavalue)\>
+
+**`See`**
+
+[Filtering with metadata](https://docs.pinecone.io/docs/metadata-filtering#supported-metadata-types)
+
+#### Defined in
+
+[src/data/types.ts:92](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L92)
+
+___
+
+### RecordMetadataValue
+
+Ƭ **RecordMetadataValue**: `string` \| `boolean` \| `number` \| `string`[]
+
+A flexible type describing valid values for metadata stored with
+each record.
+
+**`See`**
+
+[Filtering with metadata](https://docs.pinecone.io/docs/metadata-filtering#supported-metadata-types)
+
+#### Defined in
+
+[src/data/types.ts:87](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L87)
+
+___
+
+### RecordSparseValues
+
+Ƭ **RecordSparseValues**: `Object`
+
+A sparse representation of vector values
+
+**`See`**
+
+[Understanding hybrid search](https://docs.pinecone.io/docs/hybrid-search)
+
+#### Type declaration
+
+| Name      | Type       | Description                                                         |
+| :-------- | :--------- | :------------------------------------------------------------------ |
+| `indices` | `number`[] | A list of indices where non-zero values are present in a vector.    |
+| `values`  | `number`[] | The values that correspond to the positions in the `indices` array. |
+
+#### Defined in
+
+[src/data/types.ts:73](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L73)
+
+___
+
+### RecordValues
+
+Ƭ **RecordValues**: `number`[]
+
+An array of values, usually an embedding vector.
+
+#### Defined in
+
+[src/data/types.ts:66](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/types.ts#L66)
+
+___
+
+### UpdateOptions
+
+Ƭ **UpdateOptions**\<`T`\>: `Object`
+
+This type is very similar to [PineconeRecord](modules.md#pineconerecord), but differs because the
+values field is optional here. This is to allow for situations where perhaps
+the caller only wants to update metadata for a given record while leaving
+stored vector values as they are.
+
+#### Type parameters
+
+| Name | Type                                                                                                  |
+| :--- | :---------------------------------------------------------------------------------------------------- |
+| `T`  | extends [`RecordMetadata`](modules.md#recordmetadata) = [`RecordMetadata`](modules.md#recordmetadata) |
+
+#### Type declaration
+
+| Name            | Type                                                  | Description                                                                                                                                      |
+| :-------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`            | [`RecordId`](modules.md#recordid)                     | The id of the record you would like to update                                                                                                    |
+| `metadata?`     | `T`                                                   | The metadata you would like to store with this record.                                                                                           |
+| `sparseValues?` | [`RecordSparseValues`](modules.md#recordsparsevalues) | The sparse values you would like to store with this record. **`See`** [Understanding hybrid search](https://docs.pinecone.io/docs/hybrid-search) |
+| `values?`       | [`RecordValues`](modules.md#recordvalues)             | The vector values you would like to store with this record                                                                                       |
+
+#### Defined in
+
+[src/data/update.ts:32](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/data/update.ts#L32)
+
+## Variables
+
+### IndexMetaStatusStateEnum
+
+• `Const` **IndexMetaStatusStateEnum**: `Object`
+
+**`Export`**
+
+#### Type declaration
+
+| Name                   | Type                       |
+| :--------------------- | :------------------------- |
+| `InitializationFailed` | ``"InitializationFailed"`` |
+| `Initializing`         | ``"Initializing"``         |
+| `Ready`                | ``"Ready"``                |
+| `ScalingDown`          | ``"ScalingDown"``          |
+| `ScalingDownPodSize`   | ``"ScalingDownPodSize"``   |
+| `ScalingUp`            | ``"ScalingUp"``            |
+| `ScalingUpPodSize`     | ``"ScalingUpPodSize"``     |
+| `Terminating`          | ``"Terminating"``          |
+
+#### Defined in
+
+[src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts:52](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts#L52)
+
+[src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts:62](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/pinecone-generated-ts-fetch/models/IndexMetaStatus.ts#L62)

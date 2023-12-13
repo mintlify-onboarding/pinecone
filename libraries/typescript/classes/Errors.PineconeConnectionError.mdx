@@ -1,0 +1,212 @@
+---
+title: PineconeConnectionError
+---
+
+[Errors](../modules/Errors.md).PineconeConnectionError
+
+This error is thrown when the client attempts to make a
+request and never receives any response.
+
+This could be due to:
+- Incorrect configuration of the client. The client builds its connection url using values supplied in configuration, so if these values are incorrect the request will not reach a Pinecone server.
+- An outage of Pinecone's APIs. See [Pinecone's status page](https://status.pinecone.io/) to find out whether there is an ongoing incident.
+
+The `cause` property will contain a reference to the underlying error. Inspect its value to find out more about the root cause of the error.
+```
+import { Pinecone } from '@pinecone-database/pinecone';
+
+const p = new Pinecone({ apiKey: 'api-key-value', environment: 'wrong-environment' })
+
+try {
+ await p.listIndexes();
+} catch (e) {
+ console.log(e.name); // PineconeConnectionError
+ console.log(e.cause); // Error [FetchError]: The request failed and the interceptors did not return an alternative response
+ console.log(e.cause.cause); // TypeError: fetch failed
+ console.log(e.cause.cause.cause); // Error: getaddrinfo ENOTFOUND controller.wrong-environment.pinecone.io
+}
+```
+
+**`See`**
+
+[Pinecone's status page](https://status.pinecone.io/)
+
+## Hierarchy
+
+- [`BasePineconeError`](Errors.BasePineconeError.md)
+
+  ↳ **`PineconeConnectionError`**
+
+## Table of contents
+
+### Constructors
+
+- [constructor](Errors.PineconeConnectionError.md#constructor)
+
+### Properties
+
+- [cause](Errors.PineconeConnectionError.md#cause)
+- [message](Errors.PineconeConnectionError.md#message)
+- [name](Errors.PineconeConnectionError.md#name)
+- [stack](Errors.PineconeConnectionError.md#stack)
+- [prepareStackTrace](Errors.PineconeConnectionError.md#preparestacktrace)
+- [stackTraceLimit](Errors.PineconeConnectionError.md#stacktracelimit)
+
+### Methods
+
+- [captureStackTrace](Errors.PineconeConnectionError.md#capturestacktrace)
+
+## Constructors
+
+### constructor
+
+• **new PineconeConnectionError**(`e`, `url?`)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `e` | `Error` |
+| `url?` | `string` |
+
+#### Overrides
+
+[BasePineconeError](Errors.BasePineconeError.md).[constructor](Errors.BasePineconeError.md#constructor)
+
+#### Defined in
+
+[src/errors/request.ts:31](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/request.ts#L31)
+
+## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+The underlying error, if any.
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[cause](Errors.BasePineconeError.md#cause)
+
+#### Defined in
+
+[src/errors/base.ts:3](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/base.ts#L3)
+
+___
+
+### message
+
+• **message**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[message](Errors.BasePineconeError.md#message)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1054
+
+___
+
+### name
+
+• **name**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[name](Errors.BasePineconeError.md#name)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1053
+
+___
+
+### stack
+
+• `Optional` **stack**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stack](Errors.BasePineconeError.md#stack)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1055
+
+___
+
+### prepareStackTrace
+
+▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
+
+#### Type declaration
+
+▸ (`err`, `stackTraces`): `any`
+
+Optional override for formatting stack traces
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+**`See`**
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[prepareStackTrace](Errors.BasePineconeError.md#preparestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:11
+
+___
+
+### stackTraceLimit
+
+▪ `Static` **stackTraceLimit**: `number`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stackTraceLimit](Errors.BasePineconeError.md#stacktracelimit)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:13
+
+## Methods
+
+### captureStackTrace
+
+▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+
+Create .stack property on a target object
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt?` | `Function` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[captureStackTrace](Errors.BasePineconeError.md#capturestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:4

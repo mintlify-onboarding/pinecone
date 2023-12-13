@@ -1,0 +1,191 @@
+---
+title: PineconeBadRequestError
+---
+
+[Errors](../modules/Errors.md).PineconeBadRequestError
+
+This error is thrown when API requests return with status 400. Typically this is due to some aspect of the request being incorrect or invalid.
+
+Some examples when this error could occur:
+- While attempting to create an index with no available quota in your project.
+- While upserting records that do not match the `dimension` of your index
+- While attempting to create an index using an invalid name ("!@#$%")
+
+## Hierarchy
+
+- [`BasePineconeError`](Errors.BasePineconeError.md)
+
+  ↳ **`PineconeBadRequestError`**
+
+## Table of contents
+
+### Constructors
+
+- [constructor](Errors.PineconeBadRequestError.md#constructor)
+
+### Properties
+
+- [cause](Errors.PineconeBadRequestError.md#cause)
+- [message](Errors.PineconeBadRequestError.md#message)
+- [name](Errors.PineconeBadRequestError.md#name)
+- [stack](Errors.PineconeBadRequestError.md#stack)
+- [prepareStackTrace](Errors.PineconeBadRequestError.md#preparestacktrace)
+- [stackTraceLimit](Errors.PineconeBadRequestError.md#stacktracelimit)
+
+### Methods
+
+- [captureStackTrace](Errors.PineconeBadRequestError.md#capturestacktrace)
+
+## Constructors
+
+### constructor
+
+• **new PineconeBadRequestError**(`failedRequest`)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `failedRequest` | `FailedRequestInfo` |
+
+#### Overrides
+
+[BasePineconeError](Errors.BasePineconeError.md).[constructor](Errors.BasePineconeError.md#constructor)
+
+#### Defined in
+
+[src/errors/http.ts:21](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/http.ts#L21)
+
+## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+The underlying error, if any.
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[cause](Errors.BasePineconeError.md#cause)
+
+#### Defined in
+
+[src/errors/base.ts:3](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/base.ts#L3)
+
+___
+
+### message
+
+• **message**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[message](Errors.BasePineconeError.md#message)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1054
+
+___
+
+### name
+
+• **name**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[name](Errors.BasePineconeError.md#name)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1053
+
+___
+
+### stack
+
+• `Optional` **stack**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stack](Errors.BasePineconeError.md#stack)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1055
+
+___
+
+### prepareStackTrace
+
+▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
+
+#### Type declaration
+
+▸ (`err`, `stackTraces`): `any`
+
+Optional override for formatting stack traces
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+**`See`**
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[prepareStackTrace](Errors.BasePineconeError.md#preparestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:11
+
+___
+
+### stackTraceLimit
+
+▪ `Static` **stackTraceLimit**: `number`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stackTraceLimit](Errors.BasePineconeError.md#stacktracelimit)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:13
+
+## Methods
+
+### captureStackTrace
+
+▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+
+Create .stack property on a target object
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt?` | `Function` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[captureStackTrace](Errors.BasePineconeError.md#capturestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:4

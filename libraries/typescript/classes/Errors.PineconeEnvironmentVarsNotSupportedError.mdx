@@ -1,0 +1,203 @@
+---
+title: PineconeEnvironmentVarsNotSupportedError
+---
+
+[Errors](../modules/Errors.md).PineconeEnvironmentVarsNotSupportedError
+
+This error occurs when the client tries to read environment variables in
+an environment that does not have access to the Node.js global `process.env`.
+
+If you are seeing this error, you will need to configure the client by passing
+configuration values to the `Pinecone` constructor.
+
+```typescript
+import { Pinecone } from '@pinecone-database/pinecone';
+
+const pinecone = new Pinecone({
+   apiKey: 'YOUR_API_KEY',
+   environment: 'YOUR_ENVIRONMENT'
+})
+```
+
+**`See`**
+
+Instructions for configuring [Pinecone](Pinecone.md)
+
+## Hierarchy
+
+- [`BasePineconeError`](Errors.BasePineconeError.md)
+
+  ↳ **`PineconeEnvironmentVarsNotSupportedError`**
+
+## Table of contents
+
+### Constructors
+
+- [constructor](Errors.PineconeEnvironmentVarsNotSupportedError.md#constructor)
+
+### Properties
+
+- [cause](Errors.PineconeEnvironmentVarsNotSupportedError.md#cause)
+- [message](Errors.PineconeEnvironmentVarsNotSupportedError.md#message)
+- [name](Errors.PineconeEnvironmentVarsNotSupportedError.md#name)
+- [stack](Errors.PineconeEnvironmentVarsNotSupportedError.md#stack)
+- [prepareStackTrace](Errors.PineconeEnvironmentVarsNotSupportedError.md#preparestacktrace)
+- [stackTraceLimit](Errors.PineconeEnvironmentVarsNotSupportedError.md#stacktracelimit)
+
+### Methods
+
+- [captureStackTrace](Errors.PineconeEnvironmentVarsNotSupportedError.md#capturestacktrace)
+
+## Constructors
+
+### constructor
+
+• **new PineconeEnvironmentVarsNotSupportedError**(`message`)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+
+#### Overrides
+
+[BasePineconeError](Errors.BasePineconeError.md).[constructor](Errors.BasePineconeError.md#constructor)
+
+#### Defined in
+
+[src/errors/config.ts:56](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/config.ts#L56)
+
+## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+The underlying error, if any.
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[cause](Errors.BasePineconeError.md#cause)
+
+#### Defined in
+
+[src/errors/base.ts:3](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/base.ts#L3)
+
+___
+
+### message
+
+• **message**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[message](Errors.BasePineconeError.md#message)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1054
+
+___
+
+### name
+
+• **name**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[name](Errors.BasePineconeError.md#name)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1053
+
+___
+
+### stack
+
+• `Optional` **stack**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stack](Errors.BasePineconeError.md#stack)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1055
+
+___
+
+### prepareStackTrace
+
+▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
+
+#### Type declaration
+
+▸ (`err`, `stackTraces`): `any`
+
+Optional override for formatting stack traces
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+**`See`**
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[prepareStackTrace](Errors.BasePineconeError.md#preparestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:11
+
+___
+
+### stackTraceLimit
+
+▪ `Static` **stackTraceLimit**: `number`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stackTraceLimit](Errors.BasePineconeError.md#stacktracelimit)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:13
+
+## Methods
+
+### captureStackTrace
+
+▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+
+Create .stack property on a target object
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt?` | `Function` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[captureStackTrace](Errors.BasePineconeError.md#capturestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:4

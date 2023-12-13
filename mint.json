@@ -105,6 +105,48 @@
       ]
     },
     {
+      "group": "Pinecone Node.js Client",
+      "pages": [
+        "libraries/typescript/overview",
+        {
+          "group": "Modules",
+          "pages": [
+            "libraries/typescript/modules/overview",
+            "libraries/typescript/modules/Errors"
+          ]
+        },
+        {
+          "group": "Interfaces",
+          "pages": [
+            "libraries/typescript/interfaces/IndexMeta",
+            "libraries/typescript/interfaces/IndexMetaDatabase",
+            "libraries/typescript/interfaces/IndexMetaStatus",
+            "libraries/typescript/interfaces/ScoredPineconeRecord"
+          ]
+        },
+        {
+          "group": "Classes",
+          "pages": [
+            "libraries/typescript/classes/Errors.BasePineconeError",
+            "libraries/typescript/classes/Errors.PineconeArgumentError",
+            "libraries/typescript/classes/Errors.PineconeAuthorizationError",
+            "libraries/typescript/classes/Errors.PineconeBadRequestError",
+            "libraries/typescript/classes/Errors.PineconeConfigurationError",
+            "libraries/typescript/classes/Errors.PineconeConnectionError",
+            "libraries/typescript/classes/Errors.PineconeEnvironmentVarsNotSupportedError",
+            "libraries/typescript/classes/Errors.PineconeInternalServerError",
+            "libraries/typescript/classes/Errors.PineconeNotFoundError",
+            "libraries/typescript/classes/Errors.PineconeNotImplementedError",
+            "libraries/typescript/classes/Errors.PineconeRequestError",
+            "libraries/typescript/classes/Errors.PineconeUnexpectedResponseError",
+            "libraries/typescript/classes/Errors.PineconeUnmappedHttpError",
+            "libraries/typescript/classes/Index",
+            "libraries/typescript/classes/Pinecone"
+          ]
+        }
+      ]
+    },
+    {
       "group": "Examples",
       "pages": [
         "examples/examples-2"

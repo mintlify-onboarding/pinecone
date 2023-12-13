@@ -1,0 +1,188 @@
+---
+title: PineconeRequestError
+---
+
+[Errors](../modules/Errors.md).PineconeRequestError
+
+This error is thrown any time a request to the Pinecone API fails.
+
+The `cause` property will contain a reference to the underlying error. Inspect its value to find out more about the root cause.
+
+## Hierarchy
+
+- [`BasePineconeError`](Errors.BasePineconeError.md)
+
+  ↳ **`PineconeRequestError`**
+
+## Table of contents
+
+### Constructors
+
+- [constructor](Errors.PineconeRequestError.md#constructor)
+
+### Properties
+
+- [cause](Errors.PineconeRequestError.md#cause)
+- [message](Errors.PineconeRequestError.md#message)
+- [name](Errors.PineconeRequestError.md#name)
+- [stack](Errors.PineconeRequestError.md#stack)
+- [prepareStackTrace](Errors.PineconeRequestError.md#preparestacktrace)
+- [stackTraceLimit](Errors.PineconeRequestError.md#stacktracelimit)
+
+### Methods
+
+- [captureStackTrace](Errors.PineconeRequestError.md#capturestacktrace)
+
+## Constructors
+
+### constructor
+
+• **new PineconeRequestError**(`context`)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `context` | `ErrorContext` |
+
+#### Overrides
+
+[BasePineconeError](Errors.BasePineconeError.md).[constructor](Errors.BasePineconeError.md#constructor)
+
+#### Defined in
+
+[src/errors/request.ts:51](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/request.ts#L51)
+
+## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+The underlying error, if any.
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[cause](Errors.BasePineconeError.md#cause)
+
+#### Defined in
+
+[src/errors/base.ts:3](https://github.com/pinecone-io/pinecone-ts-client/blob/4ccf45d/src/errors/base.ts#L3)
+
+___
+
+### message
+
+• **message**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[message](Errors.BasePineconeError.md#message)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1054
+
+___
+
+### name
+
+• **name**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[name](Errors.BasePineconeError.md#name)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1053
+
+___
+
+### stack
+
+• `Optional` **stack**: `string`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stack](Errors.BasePineconeError.md#stack)
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1055
+
+___
+
+### prepareStackTrace
+
+▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
+
+#### Type declaration
+
+▸ (`err`, `stackTraces`): `any`
+
+Optional override for formatting stack traces
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+**`See`**
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[prepareStackTrace](Errors.BasePineconeError.md#preparestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:11
+
+___
+
+### stackTraceLimit
+
+▪ `Static` **stackTraceLimit**: `number`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[stackTraceLimit](Errors.BasePineconeError.md#stacktracelimit)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:13
+
+## Methods
+
+### captureStackTrace
+
+▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+
+Create .stack property on a target object
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt?` | `Function` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[BasePineconeError](Errors.BasePineconeError.md).[captureStackTrace](Errors.BasePineconeError.md#capturestacktrace)
+
+#### Defined in
+
+node_modules/@types/node/globals.d.ts:4
