@@ -43,7 +43,7 @@
     },
     {
       "name": "Release Notes",
-      "url": "https://docs.pinecone.io/docs/release-notes"
+      "url": "release-notes"
     }
   ],
   "anchors": [
@@ -175,6 +175,12 @@
         "api-reference/index-operations/describe_index",
         "api-reference/index-operations/delete_index",
         "api-reference/index-operations/configure_index"
+      ]
+    },
+    {
+      "group": "Release Notes",
+      "pages": [
+        "release-notes/release-notes"
       ]
     }
   ],
