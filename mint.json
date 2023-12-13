@@ -1,144 +1,143 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-    "name": "Pinecone",
-    "logo": {
-      "light": "/logo/light.png",
-      "dark": "/logo/dark.png"
+  "name": "Pinecone",
+  "logo": {
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#1C17FF",
+    "light": "#504CFF",
+    "dark": "#1C17FF"
+  },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true
+  },
+  "topbarCtaButton": {
+    "name": "Sign Up Free",
+    "url": "app.pinecone.io?sessionType=signup"
+  },
+  "topbarLinks": [
+    {
+      "name": "Log In",
+      "url": "app.pinecone.io?sessionType=login"
+    }
+  ],
+  "primaryTab": {
+    "name": "Guides"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
     },
-    "favicon": "/favicon.png",
-    "colors": {
-      "primary": "#1C17FF",
-      "light": "#504CFF",
-      "dark": "#1C17FF"
+    {
+      "name": "Examples",
+      "url": "examples"
     },
-    "modeToggle": {
-      "default": "light",
-      "isHidden": true
+    {
+      "name": "Libraries",
+      "url": "libraries"
     },
-    "topbarCtaButton": {
-      "name": "Sign Up Free",
-      "url": "app.pinecone.io?sessionType=signup"
+    {
+      "name": "Release Notes",
+      "url": "https://docs.pinecone.io/docs/release-notes"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Learn",
+      "icon": "book-open",
+      "url": "https://www.pinecone.io/learn"
     },
-    "topbarLinks": [
-      {
-        "name": "Log In",
-        "url": "app.pinecone.io?sessionType=login"
-      }
-    ],
-    "primaryTab": {
-      "name": "Guides"
+    {
+      "name": "Forum",
+      "icon": "messages",
+      "url": "https://community.pinecone.io"
     },
-    "tabs": [
-      {
-          "name": "API Reference",
-          "url": "api-reference"
-      },
-      {
-        "name": "Examples",
-        "url": "examples"
-      },
-      {
-        "name": "Libraries",
-        "url": "libraries"
-      },
-      {
-        "name": "Release Notes",
-        "url": "https://docs.pinecone.io/docs/release-notes"
-      }
-    ],
-    "anchors": [
-      {
-        "name": "Learn",
-        "icon": "book-open",
-        "url": "https://www.pinecone.io/learn"
-      },
-      {
-        "name": "Forum",
-        "icon": "messages",
-        "url": "https://community.pinecone.io"
-      },
-      {
-        "name": "Support",
-        "icon": "headset",
-        "url": "https://support.pinecone.io"
-      },
-      {
-        "name": "System Status",
-        "icon": "signal-bars",
-        "url": "https://status.pinecone.io"
-      },
-      {
-        "name": "Contact",
-        "icon": "envelope",
-        "url": "https://www.pinecone.io/contact"
-      }
-    ],
-    "navigation": [
+    {
+      "name": "Support",
+      "icon": "headset",
+      "url": "https://support.pinecone.io"
+    },
+    {
+      "name": "System Status",
+      "icon": "signal-bars",
+      "url": "https://status.pinecone.io"
+    },
+    {
+      "name": "Contact",
+      "icon": "envelope",
+      "url": "https://www.pinecone.io/contact"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting started",
+      "pages": [
+        "overview",
+        "quickstart",
+        "authentication",
+        "choosing-index-type-and-size",
+        "examples"
+      ]
+    },
+    {
+      "group": "Organizations",
+      "pages": [
+        "organizations/understanding-organizations",
         {
-            "group": "Getting started",
-            "pages": [
-              "overview",
-              "quickstart",
-              "authentication",
-              "choosing-index-type-and-size",
-              "examples"
-            ]
-          },
-          {
-            "group": "Organizations",
-            "pages": [
-              "organizations/understanding-organizations",
-              {
-                "group": "Manage billing",
-                "pages": [
-                  "organizations/manage-billing/overview",
-                  "organizations/manage-billing/setting-up-billing-through-aws-marketplace",
-                  "organizations/manage-billing/setting-up-billing-through-azure-marketplace"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Libraries",
-            "pages": [
-              "libraries/libraries"
-            ]
-          },
-          {
-            "group": "Examples",
-            "pages": [
-              "examples/examples-2"
-            ]
-          },
-          {
-            "group": "Vector Operations",
-            "pages": [
-              "api-reference/vector-operations/describeindexstats",
-              "api-reference/vector-operations/query",
-              "api-reference/vector-operations/delete",
-              "api-reference/vector-operations/fetch",
-              "api-reference/vector-operations/update",
-              "api-reference/vector-operations/upsert"
-            ]
-          },
-          {
-            "group": "Index Operations",
-            "pages": [
-              "api-reference/index-operations/list_collections",
-              "api-reference/index-operations/create_collection",
-              "api-reference/index-operations/describe_collection",
-              "api-reference/index-operations/delete_collection",
-              "api-reference/index-operations/list_indexes",
-              "api-reference/index-operations/create_index",
-              "api-reference/index-operations/describe_index",
-              "api-reference/index-operations/delete_index",
-              "api-reference/index-operations/configure_index"
-            ]
-          }
-    ],
-    "footerSocials":
-      {
-          "twitter": "https://twitter.com/pinecone?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
-          "linkedin": "https://www.linkedin.com/company/pinecone-io/"
-      }
+          "group": "Manage billing",
+          "pages": [
+            "organizations/manage-billing/overview",
+            "organizations/manage-billing/setting-up-billing-through-aws-marketplace",
+            "organizations/manage-billing/setting-up-billing-through-azure-marketplace"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Libraries",
+      "pages": [
+        "libraries/libraries"
+      ]
+    },
+    {
+      "group": "Examples",
+      "pages": [
+        "examples/examples-2"
+      ]
+    },
+    {
+      "group": "Vector Operations",
+      "pages": [
+        "api-reference/vector-operations/describeindexstats",
+        "api-reference/vector-operations/query",
+        "api-reference/vector-operations/delete",
+        "api-reference/vector-operations/fetch",
+        "api-reference/vector-operations/update",
+        "api-reference/vector-operations/upsert"
+      ]
+    },
+    {
+      "group": "Index Operations",
+      "pages": [
+        "api-reference/index-operations/list_collections",
+        "api-reference/index-operations/create_collection",
+        "api-reference/index-operations/describe_collection",
+        "api-reference/index-operations/delete_collection",
+        "api-reference/index-operations/list_indexes",
+        "api-reference/index-operations/create_index",
+        "api-reference/index-operations/describe_index",
+        "api-reference/index-operations/delete_index",
+        "api-reference/index-operations/configure_index"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/pinecone?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+    "linkedin": "https://www.linkedin.com/company/pinecone-io/"
   }
+}

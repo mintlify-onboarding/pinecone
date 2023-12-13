@@ -1,31 +1,37 @@
-/* styles.css */
+/* Global styles */
+
+#topbar-cta-button span {
+  border-radius: 4px;
+  padding: 4px 2px;
+  font-weight: bold;
+}
 
 .documentation-link {
-    color: #1C17FF;
-    text-decoration: none
+  color: #1c17ff;
+  text-decoration: none;
 }
 
 .documentation-link:hover {
-    color: #000000; /* Black color when hovering */
+  color: #000000; /* Black color when hovering */
 }
 
 .custom-button {
-    display: inline-block;
-    padding: 2px 8px;
-    background-color: #f1f1f1; 
-    color: #333; /* Text color */
-    border: 1px solid #aaa; /* Border color */
-    border-radius: 25px; /* Rounded borders */
-    text-align: center;
-    user-select: none; 
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-  }
-  
-  /* Change the button color on hover (make it unclickable) */
-  .custom-button:hover {
-    background-color: #1C17FF; 
-    color: #f1f1f1; 
-  }
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: #f1f1f1;
+  color: #333; /* Text color */
+  border: 1px solid #aaa; /* Border color */
+  border-radius: 25px; /* Rounded borders */
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Change the button color on hover (make it unclickable) */
+.custom-button:hover {
+  background-color: #1c17ff;
+  color: #f1f1f1;
+}
 
 /* Adjust the width for the second column */
 td:nth-child(2) {
