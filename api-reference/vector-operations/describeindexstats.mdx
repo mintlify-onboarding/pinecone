@@ -4,6 +4,13 @@ openapi: post /describe_index_stats
 
 <RequestExample>
 
+```bash cURL
+curl --request POST \
+  --url https://index_name-project_id.svc.environment.pinecone.io/describe_index_stats \
+  --header 'Api-Key: <api-key>' \
+  --header 'Content-Type: application/json'
+```
+
 ```python Python
 import pinecone 
 
@@ -11,6 +18,18 @@ pinecone.init(api_key='YOUR_API_KEY', environment='us-east1-gcp')
 index = pinecone.Index('example-index') 
 
 index_stats_response = index.describe_index_stats()
+```
+
+```js JavaScript
+const options = {
+  method: 'POST',
+  headers: {'Api-Key': '<api-key>', 'Content-Type': 'application/json'}
+};
+
+fetch('https://index_name-project_id.svc.environment.pinecone.io/describe_index_stats', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
 ```
 
 </RequestExample>
